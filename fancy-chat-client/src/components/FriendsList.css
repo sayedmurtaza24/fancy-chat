@@ -1,0 +1,28 @@
+.friends-list {
+  position: relative;
+  height: 100%;
+  padding: 0 1em;
+  display: flex;
+  flex-direction: column;
+}
+
+.friends-list__add-friend {
+  padding: .5em 1em;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  font-size: 1em;
+  background-color: rgb(12, 16, 66);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.friends-list__add-friend:hover {
+  background-color: rgb(20, 26, 104);
+}
+
+.friends-list__controls {
+  position: absolute;
+  bottom: 0;
+  height: 3em;
+  background-color: white;
+}
