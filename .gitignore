@@ -1,0 +1,7 @@
+fancy-chat-client/node_modules
+fancy-chat-server/node_modules
+
+fancy-chat-client/yarn.lock
+fancy-chat-server/yarn.lock
+
+fancy-chat-server/.env
