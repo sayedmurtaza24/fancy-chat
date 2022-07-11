@@ -28,5 +28,9 @@ Backend
 Database
   - MongoDB
   
+## To fix
+  - Call logs are missing
+  - Audio should be fixed
+  
 # License
 Appache
