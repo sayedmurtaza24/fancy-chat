@@ -5,7 +5,7 @@ import CallLogList from '../components/CallLogList';
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from 'react';
 import { fetchFriendsThunk } from '../slices/friendsSlice';
-import { fetchCallLogs } from '../slices/logSlice';
+import { fetchCallLogs, saveCallLog } from '../slices/logSlice';
 import AddFriend from '../components/AddFriend';
 import { CURRENT_MODE } from '../slices/callSlice';
 import IncomingCall from '../components/IncomingCall';
@@ -24,11 +24,20 @@ function Home() {
   const dispatch = useDispatch();
 
   const [showLogs, setShowLogs] = useState(false);
+  const [previousMode, setPreviousMode] = useState(CURRENT_MODE.CLOSED);
 
   useEffect(() => {
     dispatch(fetchFriendsThunk());
     dispatch(fetchCallLogs());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (previousMode === CURRENT_MODE.OUTGOING_CALL_RINGING
+      && currentMode === CURRENT_MODE.IDLE) {
+      dispatch(saveCallLog());
+    }
+    setPreviousMode(currentMode);
+  }, [currentMode, previousMode, dispatch]);
 
   const logout = e => {
     e.preventDefault();

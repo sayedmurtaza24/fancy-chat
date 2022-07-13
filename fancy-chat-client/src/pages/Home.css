@@ -50,7 +50,21 @@
   background-color: white;
   width: 30em;
   padding: 1em 0;
-  height: 100%;
+  height: calc(100vh - 250px);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.home-page__main::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+.home-page__main::-webkit-scrollbar-track {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+.home-page__main::-webkit-scrollbar-thumb {
+  background-color: #a5a5a5;
+  border-radius: 10px;
 }
 .home-page__footer {
   padding: .8em;
@@ -61,4 +75,16 @@
 .home-page__footer > a{
   text-decoration: none;
   color: antiquewhite;
+}
+
+@media screen and (max-width: 768px) {
+  .home-page__main {
+    width: 100%;
+  }
+  .home-page__nav {
+    width: 100%;
+  }
+  .home-page__contents {
+    width: 100%;
+  }
 }

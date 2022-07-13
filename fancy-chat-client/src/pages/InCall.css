@@ -18,12 +18,13 @@
   display: flex;
   overflow: hidden;
 }
+
 .call-page__fg {
   grid-row: 1;
   grid-column: 1;
   height: 100%;
   width: 100%;
-  box-shadow: 0 100px 100px rgba(0, 0, 0,0.7) inset, 0 -100px 100px rgba(0, 0, 0,0.7) inset;
+  box-shadow: 0 100px 100px rgba(0, 0, 0, 0.7) inset, 0 -100px 100px rgba(0, 0, 0, 0.7) inset;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -40,6 +41,7 @@
   color: white;
   padding: 0.7em 1.5em;
 }
+
 .call-page__friend-name::before {
   content: '';
   width: 6px;
@@ -62,6 +64,7 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
   overflow: hidden;
 }
+
 .call-page__mirror-cam canvas {
   width: 13em !important;
   height: 8em !important;
@@ -92,12 +95,29 @@
 .call-page__btn--change {
   background-color: rgb(16, 95, 179);
 }
+
 .call-page__btn--change:hover {
   background-color: rgb(8, 79, 154);
 }
+
 .call-page__btn--end {
   background-color: rgb(181, 34, 34);
 }
+
 .call-page__btn--end:hover {
   background-color: rgb(200, 35, 35);
+}
+
+@media screen and (max-width: 768px) {
+  .call-page__mirror-cam {
+    position: absolute;
+    right: 2em;
+    top: 4em;
+    max-width: 13em;
+    object-fit: cover;
+    border-radius: .5em;
+    max-height: 8em;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+    overflow: hidden;
+  }
 }
