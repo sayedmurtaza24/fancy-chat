@@ -7,14 +7,18 @@ const client = new MongoClient(uri, {
   serverApi: ServerApiVersion.v1
 });
 
-let userCollection;
-async function getUsers() {
-  if (userCollection) return userCollection;
-  else {
-    const dbClient = await client.connect()
-    userCollection = dbClient.db("fancychat").collection("users");
-    return userCollection;
+let dbClient;
+async function getDbClient() {
+  if (dbClient) {
+    return dbClient.db('fancychat');
+  } else {
+    dbClient = await client.connect();
+    return dbClient.db('fancychat');
   }
+}
+
+async function getUsers() {
+  return (await getDbClient()).collection('users');
 }
 
 module.exports = { getUsers };

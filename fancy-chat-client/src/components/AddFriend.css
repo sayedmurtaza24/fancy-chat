@@ -23,9 +23,21 @@
 }
 .add-friend-btn {
   font-size: 1em;
-  border: 1px solid aquamarine;
-  background-color: aquamarine;
+  border: 1px solid rgb(12, 16, 66);
+  background-color: rgb(12, 16, 66);
   padding: .5em 1em;
   margin-left: 3px;
+  cursor: pointer;
+  color: white;
+}
+.add-friend__dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: .5em;
+}
+.add-friend__close-btn {
+  color: red;
+  font-size: 1em;
   cursor: pointer;
 }

@@ -15,7 +15,7 @@ function ChangeEffect({ onEffectChange, show }) {
   return (
     <div className="call-page__change-effect" style={{ display: show ? 'flex' : 'none' }}>
       <div className="call-page__change-effect-inner">
-        <h2>Choose an effect</h2>
+        <h2>Choose a filter</h2>
         <div className="effects">
           {effects.map(effect =>
             <Effect

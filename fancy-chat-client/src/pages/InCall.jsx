@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import peerConnection from '../bloc/peerConnection';
 import shaders from '../shaders/shaders';
+import { saveCallLog } from '../slices/logSlice';
 
 import './InCall.css';
 import 'webrtc-adapter';
@@ -28,6 +29,10 @@ function InCall() {
   const [localCapture, setLocalCapture] = useState(null);
   const [showEffect, setShowEffect] = useState(false);
   const [shader, setShader] = useState(null);
+
+  useEffect(() => {
+    return () => dispatch(saveCallLog());
+  }, []);
 
   useEffect(() => {
     if (!localStream) return;
@@ -103,8 +108,8 @@ function InCall() {
           </div>
         </div>
         <div className="call-page__control-btns">
-          <button className="call-page__btn call-page__btn--change" onClick={openEffects}>Change Effect</button>
-          <button className="call-page__btn call-page__btn--end" onClick={endCall}>End Call</button>
+          <button className="call-page__btn call-page__btn--change" onClick={openEffects}>🤠 Change Filter</button>
+          <button className="call-page__btn call-page__btn--end" onClick={endCall}>🚫 End Call</button>
         </div>
         <ChangeEffect show={showEffect} onEffectChange={onEffectChange} />
       </div>

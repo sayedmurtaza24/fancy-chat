@@ -1,6 +1,7 @@
 import Peer from "peerjs";
 
-export default (function PeerConnection() {
+// flattening out peerjs to allow separated actions to be dispatched from any view
+export default (function () {
   let peer;
   let localStream;
   let remoteStream;

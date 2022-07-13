@@ -86,17 +86,18 @@
   color: white;
   transition: background-color 0.3s ease-in-out;
   cursor: pointer;
+  border-radius: 5px;
 }
 
 .call-page__btn--change {
-  background-color: darkblue;
+  background-color: rgb(16, 95, 179);
 }
 .call-page__btn--change:hover {
-  background-color: rgb(44, 44, 169);
+  background-color: rgb(8, 79, 154);
 }
 .call-page__btn--end {
-  background-color: darkred;
+  background-color: rgb(181, 34, 34);
 }
 .call-page__btn--end:hover {
-  background-color: rgb(198, 21, 21);
+  background-color: rgb(200, 35, 35);
 }

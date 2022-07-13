@@ -103,5 +103,12 @@ const callSlice = createSlice({
   },
 });
 
-export { sendCallInvitation, initPeerConnection, acceptIncomingCall, rejectIncomingCall, endOngoingCall, startCalling };
+export {
+  sendCallInvitation,
+  initPeerConnection, 
+  acceptIncomingCall, 
+  rejectIncomingCall, 
+  endOngoingCall, 
+  startCalling
+};
 export default callSlice.reducer;

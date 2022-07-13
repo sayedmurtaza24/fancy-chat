@@ -6,7 +6,7 @@ const initialState = {
   showAddFriend: false,
 };
 
-const fetchFriendsThunk = createAsyncThunk('auth/fetchFriends', async payload => {
+const fetchFriendsThunk = createAsyncThunk('auth/fetchFriends', async () => {
   return await userManagement.fetchAllFriends();
 })
 
