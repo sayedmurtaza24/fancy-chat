@@ -1,4 +1,5 @@
 import Peer from "peerjs";
+import { config } from '../config';
 
 // flattening out peerjs to allow separated actions to be dispatched from any view
 export default (function () {
@@ -9,13 +10,13 @@ export default (function () {
   return {
     setLocalStream: (stream) => { localStream = stream },
     getRemoteStream: () => remoteStream,
-    init: (peerId, 
-      onOpenCallback, 
-      onCallInviteCallback, 
-      onCallInviteResponseCallback, 
-      onCallCallback, 
+    init: (peerId,
+      onOpenCallback,
+      onCallInviteCallback,
+      onCallInviteResponseCallback,
+      onCallCallback,
       onCallEnd) => {
-      peer = new Peer(peerId, { host: '192.168.1.78', port: 3131, path: '/p2p/call' });
+      peer = new Peer(peerId, config.isDev ? { host: config.host, port: config.port, path: '/p2p/call' } : undefined);
       peer.on('open', onOpenCallback);
       peer.on('call', call => {
         call.answer(localStream);

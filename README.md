@@ -5,7 +5,7 @@ During my times at </salt> bootcamp, I created this web application as my hackda
 This app is video chatting application where users can set filters on their camera feed, cool isn't it?! 😃
 
 ## Demo
-I'll soon upload a demo of it on a platform (link coming soon...)
+Visit this [link](https://jealous-fox-sunglasses.cyclic.app/) to check the app for yourself.
 
 ## Idea
 I thought there are filters on Instagram and there are video chat applications why not mix them both to create

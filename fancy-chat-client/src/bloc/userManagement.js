@@ -1,3 +1,5 @@
+import { config } from '../config';
+
 export default (function () {
   return {
     isLoggedIn() {
@@ -21,7 +23,7 @@ export default (function () {
       return localStorage.getItem('token');
     },
     async login(username, password) {
-      const response = await fetch('http://192.168.1.78:3131/api/user/login', {
+      const response = await fetch(`${config.fullAddress()}/api/user/login`, {
         method: "POST",
         body: JSON.stringify({ username, password }),
         headers: { 'content-type': 'application/json' },
@@ -34,7 +36,7 @@ export default (function () {
       }
     },
     async signup(email, username, password) {
-      const response = await fetch('http://192.168.1.78:3131/api/user/create', {
+      const response = await fetch(`${config.fullAddress()}/api/user/create`, {
         method: "POST",
         body: JSON.stringify({ email, username, password }),
         headers: { 'content-type': 'application/json' },
@@ -44,7 +46,7 @@ export default (function () {
       }
     },
     async addFriend(friendName) {
-      const response = await fetch('http://192.168.1.78:3131/api/protected/friends', {
+      const response = await fetch(`${config.fullAddress()}/api/protected/friends`, {
         method: "POST",
         body: JSON.stringify({ name: friendName }),
         headers: {
@@ -57,7 +59,7 @@ export default (function () {
       }
     },
     async fetchAllFriends() {
-      const response = await fetch('http://192.168.1.78:3131/api/protected/friends/all', {
+      const response = await fetch(`${config.fullAddress()}/api/protected/friends/all`, {
         method: "POST",
         headers: {
           'auth-token': this.getToken(),

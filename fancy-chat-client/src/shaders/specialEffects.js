@@ -53,37 +53,38 @@ export const INK_FRAG_SHADER = `
 
 export const PIXELATE_FRAG_SHADER = `
   precision mediump float;
-      uniform sampler2D tex0;
-      uniform vec2 resolution;
-      varying vec2 vTexCoord;
-      vec2 center = vec2(320.0, 320.0);
-      float scale = 10.0;
-      void main(){
-              vec2 uv = vTexCoord;
-        uv.y = 1.0 - uv.y;
-        uv.x = 1.0 - uv.x;
-              vec2 tex = (uv * resolution - center) / scale;
-        tex.y /= 0.866025404;
-        tex.x -= tex.y * 0.5;
-              vec2 a;
-        if (tex.x + tex.y - floor(tex.x) - floor(tex.y) < 1.0) a = vec2(floor(tex.x), floor(tex.y));
-        else a = vec2(ceil(tex.x), ceil(tex.y));
-          vec2 b = vec2(ceil(tex.x), floor(tex.y));
-          vec2 c = vec2(floor(tex.x), ceil(tex.y));
-          vec3 TEX = vec3(tex.x, tex.y, 1.0 - tex.x - tex.y);
-          vec3 A = vec3(a.x, a.y, 1.0 - a.x - a.y);
-          vec3 B = vec3(b.x, b.y, 1.0 - b.x - b.y);
-          vec3 C = vec3(c.x, c.y, 1.0 - c.x - c.y);
-          float alen = length(TEX - A);
-          float blen = length(TEX - B);
-          float clen = length(TEX - C);
-          vec2 choice; if (alen < blen) {
-          if (alen < clen) choice = a; else choice = c;
-        } else {
-          if (blen < clen) choice = b; else choice = c;
-        }
-        choice.x += choice.y * 0.5;
-        choice.y *= 0.866025404;
-        choice *= scale / resolution;
-        gl_FragColor = texture2D(tex0, choice + center / resolution);
+  uniform sampler2D tex0;
+  uniform vec2 resolution;
+  varying vec2 vTexCoord;
+  vec2 center = vec2(320.0, 320.0);
+  float scale = 10.0;
+  void main(){
+    vec2 uv = vTexCoord;
+    uv.y = 1.0 - uv.y;
+    uv.x = 1.0 - uv.x;
+    vec2 tex = (uv * resolution - center) / scale;
+    tex.y /= 0.866025404;
+    tex.x -= tex.y * 0.5;
+    vec2 a;
+    if (tex.x + tex.y - floor(tex.x) - floor(tex.y) < 1.0) 
+      a = vec2(floor(tex.x), floor(tex.y));
+    else a = vec2(ceil(tex.x), ceil(tex.y));
+      vec2 b = vec2(ceil(tex.x), floor(tex.y));
+      vec2 c = vec2(floor(tex.x), ceil(tex.y));
+      vec3 TEX = vec3(tex.x, tex.y, 1.0 - tex.x - tex.y);
+      vec3 A = vec3(a.x, a.y, 1.0 - a.x - a.y);
+      vec3 B = vec3(b.x, b.y, 1.0 - b.x - b.y);
+      vec3 C = vec3(c.x, c.y, 1.0 - c.x - c.y);
+      float alen = length(TEX - A);
+      float blen = length(TEX - B);
+      float clen = length(TEX - C);
+      vec2 choice; if (alen < blen) {
+      if (alen < clen) choice = a; else choice = c;
+    } else {
+      if (blen < clen) choice = b; else choice = c;
+    }
+    choice.x += choice.y * 0.5;
+    choice.y *= 0.866025404;
+    choice *= scale / resolution;
+    gl_FragColor = texture2D(tex0, choice + center / resolution);
 }`

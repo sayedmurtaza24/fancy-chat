@@ -1,4 +1,5 @@
 import userManagement from './userManagement';
+import { config } from '../config';
 
 export const CALL_LOG_TYPE = Object.freeze({
   INCOMING_REJECTED: 'INCOMING_REJECTED',
@@ -26,7 +27,7 @@ export default (function () {
       }
     },
     async saveCallLog(callLog) {
-      const response = await fetch('http://192.168.1.78:3131/api/protected/logs', {
+      const response = await fetch(`${config.fullAddress()}/api/protected/logs`, {
         method: "POST",
         body: JSON.stringify(callLog),
         headers: {
@@ -39,7 +40,7 @@ export default (function () {
       }
     },
     async fetchAllCallLogs() {
-      const response = await fetch('http://192.168.1.78:3131/api/protected/logs/all', {
+      const response = await fetch(`${config.fullAddress()}/api/protected/logs/all`, {
         method: "POST",
         headers: {
           'auth-token': userManagement.getToken(),

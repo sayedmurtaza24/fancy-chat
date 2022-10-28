@@ -20,6 +20,9 @@ const JWTSECRET = process.env.JWT_AUTH_SECRET;
 app.use(express.json());
 app.use(cors());
 
+// ====================================== SERVE STATIC FILES ==================================
+app.use(express.static("build"));
+
 // ================================= PROTECTED ROUTES MIDDLEWARE ==============================
 app.use("/api/protected", (req, res, next) => {
   if (req.headers['auth-token']) {
